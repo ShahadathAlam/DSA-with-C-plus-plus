@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+// g++ pointer.cpp -o pointer.exe && ./pointer.exe
 
 
 // int main(){
