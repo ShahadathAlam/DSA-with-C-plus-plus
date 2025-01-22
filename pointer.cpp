@@ -385,21 +385,184 @@ From this code, we learned:
 
 
 
+// Pointer Arithmetic Operations
+
+#include <iostream>
+using namespace std;
+
+/*
+    This program demonstrates:
+    1. Pointer Arithmetic
+    2. Dereferencing Pointers
+    3. Array as a Constant Pointer
+    4. Accessing Array Elements using Pointer Arithmetic
+*/
+
+// Example 1: Pointer Arithmetic with Integer Pointers
+
+/*
+int main() {
+    int a = 10;
+    int* ptr = &a; // Pointer to 'a'
+    
+    cout << "Address of a: " << ptr << endl;
+    ptr++; // Increment pointer by 1 int (4 bytes)
+    cout << "Address after ptr++: " << ptr << endl; // Address increases by 4 bytes
+
+    ptr = ptr + 2; // Move pointer forward by 2 ints (8 bytes)
+    cout << "Address after ptr = ptr + 2: " << ptr << endl; // Address increases by 8 bytes
+
+    return 0;
+}
+*/
+
+
+
+/*
+    Explanation:
+    - Pointer Arithmetic:
+      Adding or incrementing a pointer depends on the size of the type:
+      For `int` (4 bytes), `ptr++` moves forward by 4 bytes.
+      Adding `n` (e.g., ptr = ptr + n) moves the pointer by `n × size_of(type)`.
+    - Output example:
+      If the address of 'a' is 0x1000:
+      After ptr++: 0x1004
+      After ptr = ptr + 2: 0x100C
+*/
+
+// Example 2: Pointer Arithmetic with Arrays
+
+/*
+int main() {
+    int arr[] = {1, 2, 3, 4, 5}; // 'arr' is a constant pointer to the first element of the array.
+    
+    cout << "First element using pointer arithmetic: " << *arr << endl;       // Access first element
+    cout << "Second element using pointer arithmetic: " << *(arr + 1) << endl; // Access second element
+    cout << "Third element using pointer arithmetic: " << *(arr + 2) << endl; // Access third element
+    cout << "Fourth element using pointer arithmetic: " << *(arr + 3) << endl; // Access fourth element
+    cout << "Fifth element using pointer arithmetic: " << *(arr + 4) << endl; // Access fifth element
+
+    return 0;
+}
+*/
+
+
+/*
+    Explanation:
+    - Array as a Pointer:
+      The array name ('arr') acts as a constant pointer to the first element.
+      Example: arr is equivalent to &arr[0].
+    - Accessing Array Elements:
+      Using pointer arithmetic: *(arr + i) gives the value at the i-th position.
+      Using subscript notation: arr[i] is functionally equivalent to *(arr + i).
+*/
+
+// Example 3: Dereferencing Pointers
+
+/*
+int main() {
+    int a = 10;
+    int* ptr = &a; // Pointer to 'a'
+
+    cout << "Value of a using dereferencing: " << *ptr << endl; // Access value stored at the pointer
+
+    return 0;
+}
+*/
+/*
+    Explanation:
+    - Dereferencing a Pointer:
+      Use *ptr to access the value stored at the memory address the pointer points to.
+    - Example:
+      If 'ptr' points to 'a' (value 10), then *ptr retrieves 10.
+*/
+
+// Example 4: Constant Pointer in Arrays
+
+/*
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    // arr = &a; // Error! 'arr' is a constant pointer and cannot be reassigned.
+
+    cout << "First element of the array: " << *arr << endl; // Access first element
+    cout << "Second element of the array: " << *(arr + 1) << endl; // Access second element
+
+    return 0;
+}
+*/
+/*
+    Explanation:
+    - The array name ('arr') is a constant pointer to the first element.
+    - You cannot reassign 'arr' (e.g., arr = &a is invalid).
+    - However, you can perform pointer arithmetic to traverse the array.
+*/
 
 
 
 
+#include <iostream>
+using namespace std;
 
+// Demonstrating Pointer Arithmetic, Comparison, Assignment, and Equality
+int main() {
 
+    // --- Pointer Arithmetic ---
+    int a = 10, b = 20;
+    int* ptr1 = &a;  // Pointer to 'a'
+    int* ptr2 = &b;  // Pointer to 'b'
 
+    cout << "Pointer Arithmetic:" << endl;
+    cout << "Address of a (ptr1): " << ptr1 << endl;
+    cout << "Address after ptr1 + 1: " << (ptr1 + 1) << endl; // Moves 4 bytes forward for int
+    cout << "Difference between ptr2 and ptr1: " << ptr2 - ptr1 << " elements" << endl; // Subtract pointers
+    cout << endl;
 
+    // --- Pointer Comparison ---
+    cout << "Pointer Comparison:" << endl;
+    cout << "Address of ptr1: " << ptr1 << endl;
+    cout << "Address of ptr2: " << ptr2 << endl;
+    cout << "Is ptr1 < ptr2? " << (ptr1 < ptr2) << endl; // Compares addresses
+    cout << endl;
 
+    // --- Pointer Assignment ---
+    cout << "Pointer Assignment:" << endl;
+    int* ptr3 = ptr1; // Assigning ptr1 to ptr3
+    cout << "Address of ptr1: " << ptr1 << endl;
+    cout << "Address of ptr3: " << ptr3 << endl; // ptr3 now points to the same location as ptr1
+    cout << endl;
 
+    // --- Pointer Equality ---
+    cout << "Pointer Equality:" << endl;
+    cout << "Are ptr1 and ptr3 equal? " << (ptr1 == ptr3) << endl; // True, as they point to the same memory address
+    cout << endl;
 
+    // --- Invalid Pointer Addition Example ---
+    cout << "Invalid Pointer Addition (Explained in Notes):" << endl;
+    cout << "You cannot add two pointers directly (e.g., ptr1 + ptr2 is invalid)." << endl;
+    cout << "Reason: Adding two addresses is undefined in the context of memory locations." << endl;
+    cout << endl;
 
+    return 0;
+}
 
+/*
+NOTES:
+1. Pointer Arithmetic:
+   - Adding/Subtracting an integer to/from a pointer shifts the pointer by (integer × size of data type).
+   - Subtracting two pointers gives the difference in terms of the number of elements between them.
 
+2. Pointer Comparison:
+   - Relational operators (<, >, <=, >=, ==, !=) can compare addresses stored in pointers.
 
+3. Pointer Assignment:
+   - Assigning one pointer to another makes both pointers point to the same memory address.
 
+4. Pointer Equality:
+   - Two pointers are equal if they store the same memory address.
 
+5. Invalid Operations:
+   - Adding two pointers directly is not allowed in C++ because it doesn't have a meaningful interpretation.
+
+Use these concepts carefully, especially with uninitialized pointers, as they may lead to undefined behavior.
+*/
 
