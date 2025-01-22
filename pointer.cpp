@@ -245,44 +245,161 @@ int main(){
 
 
 
-
-
-
-
+// Array pointer
 
 /*
 
+#include <iostream>
+using namespace std;
 
-int main(){
+int main() {
 
-
-    int a = 10;
-    int* ptr = &a;
-
-    // pointer to pointer
-    int** ptr2 = &ptr;
-
-    cout << "Value of a: " << a << endl;
-    cout << "Address of a: " << &a << endl;
-    cout << "Value of ptr: " << ptr << endl;
-    cout << "Address of ptr: " << &ptr << endl;
-    cout << "Value of ptr2: " << ptr2 << endl;
-    cout << "Address of ptr2: " << &ptr2 << endl;
-
-    // dereference operator
-
-    cout << "Dereferenced &a: " << *(&a) << endl;
-    cout << "Dereferenced ptr: " << *(ptr) << endl;
-       cout << "Value of a: " << a << endl;
-
-       // Double dereference operator
-       cout << "Double Dereferenced ptr2: " << **(ptr2) << endl;
-
-    return 0;
+  int arr[] = {1,2,3,4,5,};
+  cout << arr << endl; // pointer
+  cout << *arr << endl;  // pointer => 1
 
 
+   return 0;
 
- 
 }
 
 */
+
+// 1. **Pointers and Reassignment**
+// 2. **Constant Pointers (Array Pointers)**
+
+
+
+// ### **1. Pointers and Reassignment**
+
+/*
+int main() {
+    int a = 15, b = 10;
+
+    int* ptr = &a; // 'ptr' is a pointer pointing to the address of 'a'.
+    ptr = &b;      // 'ptr' is reassigned to point to the address of 'b'.
+    return 0;
+}
+
+*/
+
+/*
+#### **Explanation:**
+- **Definition of a Pointer:** A pointer is a variable that stores the memory address of another variable.
+- In the code above:
+  - `ptr` is initialized with the address of `a` (`int* ptr = &a`).
+  - `ptr` is then reassigned to the address of `b` (`ptr = &b`).
+- **Pointers are reassignable:** You can make a pointer point to different variables during its lifetime.
+
+---
+*/
+// ### **2. Constant Pointers (Array Pointers)**
+
+/*
+int main() {
+    int arr[] = {1, 2, 3, 4, 5}; // 'arr' is an array (constant pointer).
+    int a = 15;
+
+    arr = &a; // Error: Cannot reassign 'arr' because it's a constant pointer.
+    return 0;
+}
+*/
+/*
+
+#### **Explanation:**
+- **Array as a Constant Pointer:** 
+  - In C++, the name of an array (e.g., `arr`) is treated as a **constant pointer** to the first element of the array.
+  - `arr` is equivalent to `&arr[0]`.
+- **Reassignment Restriction:**
+  - Once an array pointer is initialized, you cannot reassign it to point to another memory address (like `&a`).
+  - The statement `arr = &a;` will result in a **compilation error** because `arr` is a **constant pointer**.
+
+---
+
+### **Comparison of Pointer Behavior**
+
+| **Type**            | **Behavior**                                                                 |
+|----------------------|-----------------------------------------------------------------------------|
+| **Normal Pointer**   | Can be reassigned to point to different variables or memory addresses.      |
+| **Constant Pointer** | Cannot be reassigned to point to a different memory address after initialization. |
+
+---
+
+### **Takeaways from the Code**
+
+1. **Normal Pointers:**
+   - You can reassign a pointer to a different memory address during its lifetime.
+   - Example:
+     ```cpp
+     int a = 10, b = 20;
+     int* ptr = &a;
+     ptr = &b; // Valid
+     ```
+
+2. **Constant Pointers (Array Pointers):**
+   - The name of an array is a constant pointer to its first element.
+   - **Cannot be reassigned** to another memory address after initialization.
+   - Example:
+     ```cpp
+     int arr[] = {1, 2, 3};
+     arr = &a; // Invalid: Compilation error
+     ```
+
+---
+
+### **Code Recap**
+
+#### **Normal Pointer Example:**
+```cpp
+int main() {
+    int a = 15, b = 10;
+
+    int* ptr = &a; // 'ptr' points to 'a'.
+    ptr = &b;      // 'ptr' now points to 'b'.
+    return 0;
+}
+```
+
+#### **Constant Pointer (Array) Example:**
+```cpp
+int main() {
+    int arr[] = {1, 2, 3, 4, 5}; // 'arr' is a constant pointer to the first element of the array.
+    int a = 15;
+
+    arr = &a; // Error: 'arr' is a constant pointer, cannot be reassigned.
+    return 0;
+}
+```
+
+---
+
+### **Conclusion**
+
+From this code, we learned:
+1. **Pointers can be reassigned** to point to different memory addresses.
+2. **Array names are constant pointers**, which cannot be reassigned to another memory location.
+3. **Key distinction:** While normal pointers are flexible, constant pointers (like array pointers) are fixed once initialized.
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
