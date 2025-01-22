@@ -119,6 +119,8 @@ This program demonstrates key concepts related to **null pointers** and **uninit
 */
 // #### **Code with Explanation**
 
+
+/*
 #include <iostream>
 using namespace std;
 
@@ -143,7 +145,7 @@ int main() {
     return 0;
 }
 
-
+*/
 
 /*
 ---
@@ -187,11 +189,58 @@ Let’s break down the expected output:
 
 
 
+// pass by value vs pass by reference
+
+/*
+#include <iostream>
+using namespace std;
+
+void changeA(int a){      // pass by value
+
+  a =20;
+}
+
+int main(){
+     int a = 10;
+
+     changeA(a);
+     cout << "inside main fn: " << a << endl;
+
+   return 0;
+}
 
 
+void changeA(int* ptr){   // pass by reference using pointer
+
+ *ptr = 20;
+}
+
+int main(){
+     int a = 10;
+
+     changeA(&a);
+     cout << "inside main fn: " << a << endl;
+
+   return 0;
+}
 
 
+void changeA(int &ptr){   // pass by reference using alias
 
+ ptr = 20;
+}
+
+int main(){
+     int a = 10;
+
+     changeA(a);
+     cout << "inside main fn: " << a << endl;
+
+   return 0;
+}
+
+
+*/
 
 
 
