@@ -7,6 +7,7 @@ pages allocated to a student while ensuring the following constraints:
   1. Each book should be allocated to a student.
   2. Each student must be allocated at least one book.
   3. The books must be allocated in contiguous order.
+  4. The books are represented by an array arr of size n, where each element arr[i] represents the number of pages of the i-th book.
 
 Return the minimum possible value of the maximum number of pages assigned to a student.
 */
