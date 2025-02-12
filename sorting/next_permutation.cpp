@@ -4,7 +4,7 @@
 
 /*
  * Problem Statement:
- 
+
 A permutation of an array of integers is an arrangement of its members into a sequence or linear order.
 
 For example, for arr = [1,2,3], the following are all the permutations of arr: [1,2,3], [1,3,2], [2, 1, 3], [2, 3, 1], [3,1,2], [3,2,1].
@@ -63,13 +63,17 @@ Output: [1,3,2]
             j--;
         }
  }
- 
+//   void next_permutationDirect(int nums[], int n) {
+
+//     next_permutation(nums,nums+n);
+//   }
  // Driver function
  int main() {
      int nums[] = {1, 2, 3, 5, 4};
      int n = sizeof(nums) / sizeof(nums[0]);
      
      next_permutation(nums, n);
+    // next_permutationDirect(nums, n);
      
      // Print the next permutation
      for (int i = 0; i < n; i++)
