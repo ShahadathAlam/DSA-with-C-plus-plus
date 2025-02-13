@@ -9,9 +9,9 @@
     🚀 If you want to reclaim memory after removing elements, use shrink_to_fit().
 */
 
-#include <iostream>
-#include <vector>
-using namespace std;
+// #include <iostream>
+// #include <vector>
+// using namespace std;
 
 // int main() {
 //     // ✅ Initial vector
@@ -58,22 +58,22 @@ using namespace std;
 
 
 // insert
-int main() {
-    // ✅ Initial vector
-    vector<int> v = {1, 2, 3, 4, 5};
+// int main() {
+//     // ✅ Initial vector
+//     vector<int> v = {1, 2, 3, 4, 5};
     
-    // �� Using insert() to insert 6 at index 3
-    v.insert(v.begin() + 3, 6);
-    cout << "After insert (adding 6 at index 3):\n";
-    for (int num : v) {
-        cout << num << " ";
-    }
-    cout << endl;
+//     // �� Using insert() to insert 6 at index 3
+//     v.insert(v.begin() + 3, 6);
+//     cout << "After insert (adding 6 at index 3):\n";
+//     for (int num : v) {
+//         cout << num << " ";
+//     }
+//     cout << endl;
   
 
 
-    return 0;
-}
+//     return 0;
+// }
 
 
 /*
@@ -93,58 +93,58 @@ int main() {
        - Use std::list when frequent **insertions/deletions in the middle (O(1))** are needed.
 */
 
-#include <iostream>
-#include <vector>
-#include <list>
-using namespace std;
+// #include <iostream>
+// #include <vector>
+// #include <list>
+// using namespace std;
 
-int main() {
-    cout << "🔹 Using std::vector:\n";
+// int main() {
+//     cout << "🔹 Using std::vector:\n";
 
-    vector<int> v = {1, 2, 3, 4, 5};
-    cout << "Before insert: ";
-    for (int num : v) cout << num << " ";
-    cout << endl;
+//     vector<int> v = {1, 2, 3, 4, 5};
+//     cout << "Before insert: ";
+//     for (int num : v) cout << num << " ";
+//     cout << endl;
 
-    // Insert at index 2 (O(n) because elements shift right)
-    v.insert(v.begin() + 2, 10);
-    cout << "After insert at index 2: ";
-    for (int num : v) cout << num << " ";
-    cout << endl;
+//     // Insert at index 2 (O(n) because elements shift right)
+//     v.insert(v.begin() + 2, 10);
+//     cout << "After insert at index 2: ";
+//     for (int num : v) cout << num << " ";
+//     cout << endl;
 
-    // Erase from index 2 (O(n) because elements shift left)
-    v.erase(v.begin() + 2);
-    cout << "After erase at index 2: ";
-    for (int num : v) cout << num << " ";
-    cout << endl;
+//     // Erase from index 2 (O(n) because elements shift left)
+//     v.erase(v.begin() + 2);
+//     cout << "After erase at index 2: ";
+//     for (int num : v) cout << num << " ";
+//     cout << endl;
 
-    cout << "\n🔹 Using std::list (Efficient Insert/Delete):\n";
+//     cout << "\n🔹 Using std::list (Efficient Insert/Delete):\n";
 
-    list<int> lst = {1, 2, 3, 4, 5};
-    cout << "Before insert: ";
-    for (int num : lst) cout << num << " ";
-    cout << endl;
+//     list<int> lst = {1, 2, 3, 4, 5};
+//     cout << "Before insert: ";
+//     for (int num : lst) cout << num << " ";
+//     cout << endl;
 
-    // Move iterator to index 2
-    auto it = lst.begin();
-    advance(it, 2);
+//     // Move iterator to index 2
+//     auto it = lst.begin();
+//     advance(it, 2);
 
-    // Insert at index 2 (O(1), no shifting)
-    lst.insert(it, 10);
-    cout << "After insert at index 2: ";
-    for (int num : lst) cout << num << " ";
-    cout << endl;
+//     // Insert at index 2 (O(1), no shifting)
+//     lst.insert(it, 10);
+//     cout << "After insert at index 2: ";
+//     for (int num : lst) cout << num << " ";
+//     cout << endl;
 
-    // Erase from index 2 (O(1), no shifting)
-    it = lst.begin();
-    advance(it, 2);
-    lst.erase(it);
-    cout << "After erase at index 2: ";
-    for (int num : lst) cout << num << " ";
-    cout << endl;
+//     // Erase from index 2 (O(1), no shifting)
+//     it = lst.begin();
+//     advance(it, 2);
+//     lst.erase(it);
+//     cout << "After erase at index 2: ";
+//     for (int num : lst) cout << num << " ";
+//     cout << endl;
 
-    return 0;
-}
+//     return 0;
+// }
 
 /*
    🎯 Expected Output:
@@ -174,3 +174,72 @@ int main() {
    ✅ Use std::vector for fast **random access (O(1))**.
    ✅ Use std::list for **frequent insertions/deletions in the middle (O(1))**.
 */
+
+
+
+// --------------------- Iterators in Vectors --------------------------------
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// int main() {
+
+
+//     // Create a vector with some elements
+//     vector<int> v = {1, 2, 3, 4, 5};
+    
+//     // Print the vector elements using iterators
+//     cout << "Using iterators: ";
+
+//     vector<int>::iterator it;
+//     for ( it= v.begin(); it!= v.end(); it++) {
+//         cout << *it << " ";
+//     }
+//     cout << endl;
+
+   // ------ modern way to define iterator --------------------------------
+    // for (auto it= v.begin(); it!= v.end(); it++) {
+    //     cout << *it << " ";
+    // }
+    // cout << endl;
+
+//     return 0;
+// }
+
+
+
+// reverse iterator
+int main() {
+    // Create a vector with some elements
+    vector<int> v = {1, 2, 3, 4, 5};
+    
+    // Print the vector elements using reverse iterator
+    cout << "Using reverse iterators: ";
+    
+    // -----defining reverse iterator way 1 --------------------
+    // vector<int>::reverse_iterator rit;
+    // for (rit= v.rbegin(); rit!= v.rend(); rit++) {
+    //     cout << *rit << " ";
+    //     // cout << &(*rit) << " ";
+    //     // cout << rit << " "; // this will not work
+    //     // cout << static_cast<void*>(&*rit) << " ";
+    // }
+    // cout << endl;
+
+   // -----defining reverse iterator way 2 --------------------
+    // for (vector<int>::reverse_iterator rit= v.rbegin(); rit!= v.rend(); rit++) {
+    //     cout << *rit << " ";
+    // }
+    // cout << endl;
+   
+
+    // -----defining reverse iterator way 3 (modern) --------------------
+    for (auto rit= v.rbegin(); rit!= v.rend(); rit++) {
+        cout << *rit << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+
