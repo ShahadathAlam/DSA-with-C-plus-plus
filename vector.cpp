@@ -74,3 +74,103 @@ int main() {
 
     return 0;
 }
+
+
+/*
+    📌 Why are insert() and erase() Costly in std::vector?
+
+    📝 Time Complexity Analysis:
+    - insert() at the end -> O(1) Amortized (unless reallocation occurs)
+    - insert() in the middle -> O(n) (shifts elements to the right)
+    - erase() at the end -> O(1) (no shifting required)
+    - erase() in the middle -> O(n) (shifts elements to the left)
+
+    ❌ std::vector operations can be costly when inserting or deleting from the middle
+    ✅ Alternative: Use std::list (Doubly Linked List) for O(1) insert/erase
+
+    🔹 Best Use Cases:
+       - Use std::vector when fast **random access (O(1))** is required.
+       - Use std::list when frequent **insertions/deletions in the middle (O(1))** are needed.
+*/
+
+#include <iostream>
+#include <vector>
+#include <list>
+using namespace std;
+
+int main() {
+    cout << "🔹 Using std::vector:\n";
+
+    vector<int> v = {1, 2, 3, 4, 5};
+    cout << "Before insert: ";
+    for (int num : v) cout << num << " ";
+    cout << endl;
+
+    // Insert at index 2 (O(n) because elements shift right)
+    v.insert(v.begin() + 2, 10);
+    cout << "After insert at index 2: ";
+    for (int num : v) cout << num << " ";
+    cout << endl;
+
+    // Erase from index 2 (O(n) because elements shift left)
+    v.erase(v.begin() + 2);
+    cout << "After erase at index 2: ";
+    for (int num : v) cout << num << " ";
+    cout << endl;
+
+    cout << "\n🔹 Using std::list (Efficient Insert/Delete):\n";
+
+    list<int> lst = {1, 2, 3, 4, 5};
+    cout << "Before insert: ";
+    for (int num : lst) cout << num << " ";
+    cout << endl;
+
+    // Move iterator to index 2
+    auto it = lst.begin();
+    advance(it, 2);
+
+    // Insert at index 2 (O(1), no shifting)
+    lst.insert(it, 10);
+    cout << "After insert at index 2: ";
+    for (int num : lst) cout << num << " ";
+    cout << endl;
+
+    // Erase from index 2 (O(1), no shifting)
+    it = lst.begin();
+    advance(it, 2);
+    lst.erase(it);
+    cout << "After erase at index 2: ";
+    for (int num : lst) cout << num << " ";
+    cout << endl;
+
+    return 0;
+}
+
+/*
+   🎯 Expected Output:
+   --------------------------
+   🔹 Using std::vector:
+   Before insert: 1 2 3 4 5 
+   After insert at index 2: 1 2 10 3 4 5 
+   After erase at index 2: 1 2 3 4 5 
+
+   🔹 Using std::list (Efficient Insert/Delete):
+   Before insert: 1 2 3 4 5 
+   After insert at index 2: 1 2 10 3 4 5 
+   After erase at index 2: 1 2 3 4 5 
+*/
+
+/*
+   🏆 Summary Table:
+   -------------------------------------
+   Operation            | std::vector    | std::list
+   -------------------------------------
+   push_back()          | O(1) Amortized | O(1)
+   insert() at end      | O(1) Amortized | O(1)
+   insert() in middle   | ❌ O(n)        | ✅ O(1)
+   erase() at end       | O(1)           | O(1)
+   erase() in middle    | ❌ O(n)        | ✅ O(1)
+
+   ✅ Use std::vector for fast **random access (O(1))**.
+   ✅ Use std::list for **frequent insertions/deletions in the middle (O(1))**.
+*/
