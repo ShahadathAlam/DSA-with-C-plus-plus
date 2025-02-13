@@ -13,32 +13,32 @@
 #include <vector>
 using namespace std;
 
-int main() {
-    // ✅ Initial vector
-    vector<int> v = {1, 2, 3, 4, 5};
-    cout << "Before any operation:\n";
-    cout << "Size = " << v.size() << ", Capacity = " << v.capacity() << endl;
+// int main() {
+//     // ✅ Initial vector
+//     vector<int> v = {1, 2, 3, 4, 5};
+//     cout << "Before any operation:\n";
+//     cout << "Size = " << v.size() << ", Capacity = " << v.capacity() << endl;
 
-    // 🔹 Using erase() to remove the third element (index 2)
-    v.erase(v.begin() + 2);
-    cout << "\nAfter erase (removing index 2):\n";
-    cout << "Size = " << v.size() << ", Capacity = " << v.capacity() << endl;
-    // ⚠️ Size decreased, but capacity remains unchanged
+//     // 🔹 Using erase() to remove the third element (index 2)
+//     v.erase(v.begin() + 2);
+//     cout << "\nAfter erase (removing index 2):\n";
+//     cout << "Size = " << v.size() << ", Capacity = " << v.capacity() << endl;
+//     // ⚠️ Size decreased, but capacity remains unchanged
 
-    // 🔹 Using clear() to remove all elements
-    v.clear();
-    cout << "\nAfter clear (removing all elements):\n";
-    cout << "Size = " << v.size() << ", Capacity = " << v.capacity() << endl;
-    // ⚠️ Vector is empty, but capacity remains the same
+//     // 🔹 Using clear() to remove all elements
+//     v.clear();
+//     cout << "\nAfter clear (removing all elements):\n";
+//     cout << "Size = " << v.size() << ", Capacity = " << v.capacity() << endl;
+//     // ⚠️ Vector is empty, but capacity remains the same
 
-    // 🔹 Using shrink_to_fit() to reduce capacity
-    v.shrink_to_fit();
-    cout << "\nAfter shrink_to_fit():\n";
-    cout << "Size = " << v.size() << ", Capacity = " << v.capacity() << endl;
-    // ✅ Capacity may shrink to match the size (depends on implementation)
+//     // 🔹 Using shrink_to_fit() to reduce capacity
+//     v.shrink_to_fit();
+//     cout << "\nAfter shrink_to_fit():\n";
+//     cout << "Size = " << v.size() << ", Capacity = " << v.capacity() << endl;
+//     // ✅ Capacity may shrink to match the size (depends on implementation)
 
-    return 0;
-}
+//     return 0;
+// }
 
 /*
    🎯 Expected Output (capacity depends on compiler implementation):
@@ -55,3 +55,22 @@ int main() {
    After shrink_to_fit():
    Size = 0, Capacity = 0  <-- Capacity reduced (if supported)
 */
+
+
+// insert
+int main() {
+    // ✅ Initial vector
+    vector<int> v = {1, 2, 3, 4, 5};
+    
+    // �� Using insert() to insert 6 at index 3
+    v.insert(v.begin() + 3, 6);
+    cout << "After insert (adding 6 at index 3):\n";
+    for (int num : v) {
+        cout << num << " ";
+    }
+    cout << endl;
+  
+
+
+    return 0;
+}
