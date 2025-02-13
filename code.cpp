@@ -1,7 +1,8 @@
 #include <iostream>
 using namespace std;
-
-// g++ pointer.cpp -o pointer.exe && ./pointer.exe
+// g++ -o Sort_Colors.exe Sort_Colors.cpp
+// ./Sort_Colors.exe
+// g++ Sort_Colors.cpp -o Sort_Colors.exe && ./Sort_Colors.exe
 
 
 // int main(){
