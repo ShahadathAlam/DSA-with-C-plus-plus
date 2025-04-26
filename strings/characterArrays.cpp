@@ -26,7 +26,10 @@ int main() {
     return 0;
 }
     */
-int main() {
+
+
+ /*
+ int main() {
     // 1
     // char str[] = "apna college";
    
@@ -54,5 +57,50 @@ int main() {
 
 
    
+    return 0;
+}
+ */   
+
+
+ // string class in STL
+
+/*
+int main() {
+  string str = "apna college";
+  cout << str << endl;
+
+
+   
+    return 0;
+}
+    */
+
+// Difference between string class & character array
+
+// 1. string is dynamic in nature and it can be resize in runtime while character array is static in nature and its size is fixed at compile time and can not be resized in runtime 
+
+/*
+
+int main() {
+  string str = "apna college";
+  cout << str << endl;
+
+  // string is dynamic in nature and it can be resize in runtime
+   str = "hello";
+  cout << str << endl;
+ 
+  // character array is static in nature and its size is fixed at compile time and can not be resized in runtime
+   char chArr[] = "apna college";
+   chArr = "hello";
+
+    return 0;
+}
+    
+*/
+int main() {
+  string str = "apna college";
+  cout << str << endl;
+
+
     return 0;
 }
